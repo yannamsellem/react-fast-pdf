@@ -1,0 +1,13 @@
+# Misc
+.DS_Store
+*.log
+
+
+# Npm
+node_modules
+npm-debug.log*
+
+# Build
+dist
+dist-ssr
+*.local

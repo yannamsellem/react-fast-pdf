@@ -1,0 +1,79 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    }
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "extends": [
+    "airbnb",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "semi": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+    "no-confusing-arrow": 0,
+    "function-paren-newline": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/no-noninteractive-element-interactions": 0,
+    "import/no-extraneous-dependencies": 0,
+    "react/jsx-props-no-spreading": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/no-empty-function": 0,
+    "@typescript-eslint/member-delimiter-style": 0,
+    "arrow-parens": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "mjs": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "react/react-in-jsx-scope": 0,
+    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "arrow-body-style": "off",
+    "react/jsx-no-bind": [
+      "error",
+      {
+        "ignoreRefs": true,
+        "allowArrowFunctions": true,
+        "allowFunctions": true,
+        "allowBind": false,
+        "ignoreDOMComponents": true
+      }
+    ],
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": [
+          "function-declaration",
+          "function-expression",
+          "arrow-function"
+        ],
+        "unnamedComponents": "arrow-function"
+      }
+    ]
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
+  }
+}
