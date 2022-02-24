@@ -6,7 +6,7 @@ import type {
 import { css, cx } from '@emotion/css'
 import { useEffect, useMemo, useState } from 'react'
 
-import TextItem from './Item'
+import TextItem from './ItemWithMatrix'
 
 interface Props {
   page: PDFPageProxy
@@ -60,7 +60,7 @@ export default function TextLayer({ page, scale = 1, className }: Props) {
         css`
           position: absolute;
           inset: 0;
-          color: lightgray;
+          color: transparent;
           transform: rotate(${page.rotate}deg);
           pointer-events: none;
           display: flex;

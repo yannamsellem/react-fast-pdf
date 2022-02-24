@@ -1,9 +1,15 @@
-export type Transform = [number, number, number, number, number, number]
+type ScaleX = number
+type SkewX = number
+type SkewY = number
+type ScaleY = number
+type TranslateX = number
+type TranslateY = number
 
-export function getRotateFromTransform(
-  transform: [number, number, number, number, number, number],
-): number {
-  return Math.atan2(transform[1], transform[0]) * (180 / Math.PI)
+export type Matrix = [ScaleX, SkewX, SkewY, ScaleY, TranslateX, TranslateY]
+
+export function getRotateFromMatrix(transform: Matrix): number {
+  const [scaleX, skewX] = transform
+  return Math.atan2(skewX, scaleX) * (180 / Math.PI)
 }
 
 const CANVAS_ELEMENT = document.createElement('canvas')
@@ -47,4 +53,21 @@ export function getTextWidth(
   layoutContext.font = `${fontSize}px ${fontFamily}`
   const metrics = layoutContext.measureText(text)
   return metrics?.width ?? 0
+}
+
+export function getTextMeasure(
+  fontSize: number,
+  fontFamily: string,
+  text: string,
+) {
+  const layoutContext = getLazyContext()
+  if (!layoutContext) return null
+  layoutContext.font = `${fontSize}px ${fontFamily}`
+  const metrics = layoutContext.measureText(text)
+  return metrics
+}
+
+export function matrixToRotation(matrix: Matrix) {
+  const [scaleX, skewX] = matrix
+  return Math.round(Math.atan2(skewX, scaleX) * (180 / Math.PI))
 }

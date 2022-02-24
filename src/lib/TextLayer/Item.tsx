@@ -6,8 +6,8 @@ import type {
 import type { PageViewport } from 'pdfjs-dist/types/src/display/display_utils'
 import { Util } from 'pdfjs-dist'
 import { useMemo } from 'react'
-import { getRotateFromTransform, getAscent, getTextWidth } from './utils'
-import type { Transform } from './utils'
+import { getRotateFromMatrix, getAscent, getTextWidth } from './utils'
+import type { Matrix } from './utils'
 
 interface Props {
   textStyle: TextStyle
@@ -28,9 +28,9 @@ export default function TextItem({
     const transform = Util.transform(
       viewport.transform,
       item.transform,
-    ) as Transform
+    ) as Matrix
 
-    const angle = getRotateFromTransform(transform)
+    const angle = getRotateFromMatrix(transform)
     const fontSize = Math.hypot(transform[2], transform[3])
     const ascent = getAscent(textStyle.fontFamily)
     const fontAscent = fontSize * ascent
